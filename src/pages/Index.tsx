@@ -8,6 +8,7 @@ import heroImage from "@/assets/hero-tech.jpg";
 import webDevImage from "@/assets/web-dev.jpg";
 import mobileDevImage from "@/assets/mobile-dev.jpg";
 import freelanceImage from "@/assets/freelance.jpg";
+import logo from "@/assets/logo.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,6 +20,36 @@ const stagger = {
     transition: {
       staggerChildren: 0.15,
     },
+  },
+};
+
+const logoReveal = {
+  hidden: { 
+    opacity: 0, 
+    scale: 0.8,
+    filter: "blur(10px)"
+  },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.46, 0.45, 0.94] as const
+    }
+  },
+};
+
+const circuitLines = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: { 
+    pathLength: 1, 
+    opacity: 1,
+    transition: {
+      duration: 1.2,
+      ease: "easeInOut" as const,
+      delay: 0.3
+    }
   },
 };
 
@@ -67,18 +98,19 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="max-w-4xl"
-          >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-4 py-2 rounded-full bg-secondary text-accent font-medium text-sm">
-                🚀 Welcome to the Future of Tech
-              </span>
-            </motion.div>
-
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="max-w-2xl"
+            >
+              <motion.div variants={fadeInUp} className="mb-6">
+                <span className="inline-block px-4 py-2 rounded-full bg-secondary text-accent font-medium text-sm">
+                  🚀 Welcome to the Future of Tech
+                </span>
+              </motion.div>
             <motion.h1
               variants={fadeInUp}
               className="text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-6 leading-tight"
@@ -121,9 +153,183 @@ const Index = () => {
               ))}
             </motion.div>
           </motion.div>
+
+            {/* Right side - Animated Logo */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              className="hidden lg:flex items-center justify-center"
+            >
+              <div className="relative">
+                {/* Animated circuit lines background */}
+                <motion.svg
+                  className="absolute -inset-8 w-[calc(100%+64px)] h-[calc(100%+64px)]"
+                  viewBox="0 0 400 400"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {/* Left circuit lines */}
+                  <motion.path
+                    d="M50 200 H120 L140 180 H160"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="2"
+                    fill="none"
+                    variants={circuitLines}
+                  />
+                  <motion.path
+                    d="M30 220 H100 L120 200 H150"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="1.5"
+                    fill="none"
+                    variants={circuitLines}
+                    style={{ transitionDelay: "0.2s" }}
+                  />
+                  <motion.path
+                    d="M60 180 H110 L130 160 H155"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="1"
+                    fill="none"
+                    opacity="0.6"
+                    variants={circuitLines}
+                  />
+                  
+                  {/* Right circuit lines */}
+                  <motion.path
+                    d="M350 200 H280 L260 180 H240"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="2"
+                    fill="none"
+                    variants={circuitLines}
+                  />
+                  <motion.path
+                    d="M370 220 H300 L280 200 H250"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="1.5"
+                    fill="none"
+                    variants={circuitLines}
+                  />
+                  <motion.path
+                    d="M340 180 H290 L270 160 H245"
+                    stroke="hsl(var(--accent))"
+                    strokeWidth="1"
+                    fill="none"
+                    opacity="0.6"
+                    variants={circuitLines}
+                  />
+
+                  {/* Nodes/dots at line ends */}
+                  <motion.circle
+                    cx="50"
+                    cy="200"
+                    r="4"
+                    fill="hsl(var(--accent))"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1.2, duration: 0.3 }}
+                  />
+                  <motion.circle
+                    cx="350"
+                    cy="200"
+                    r="4"
+                    fill="hsl(var(--accent))"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1.2, duration: 0.3 }}
+                  />
+                  <motion.circle
+                    cx="30"
+                    cy="220"
+                    r="3"
+                    fill="hsl(var(--primary))"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1.3, duration: 0.3 }}
+                  />
+                  <motion.circle
+                    cx="370"
+                    cy="220"
+                    r="3"
+                    fill="hsl(var(--primary))"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1.3, duration: 0.3 }}
+                  />
+                </motion.svg>
+
+                {/* Glowing background */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-accent/20 blur-3xl"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ 
+                    opacity: [0.3, 0.5, 0.3], 
+                    scale: [1, 1.1, 1] 
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+
+                {/* Logo container with reveal animation */}
+                <motion.div
+                  variants={logoReveal}
+                  className="relative z-10 p-8"
+                >
+                  <motion.div
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(59, 130, 246, 0.3)",
+                        "0 0 40px rgba(59, 130, 246, 0.5)",
+                        "0 0 20px rgba(59, 130, 246, 0.3)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-accent/20"
+                  >
+                    <motion.img
+                      src={logo}
+                      alt="Hakam TechSol Logo"
+                      className="w-64 h-auto"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.6 }}
+                    />
+                  </motion.div>
+                </motion.div>
+
+                {/* Floating particles */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 rounded-full bg-accent"
+                    style={{
+                      left: `${20 + (i * 15)}%`,
+                      top: `${10 + (i % 3) * 30}%`,
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ 
+                      opacity: [0.4, 0.8, 0.4],
+                      scale: [0.8, 1.2, 0.8],
+                      y: [0, -10, 0]
+                    }}
+                    transition={{ 
+                      duration: 2 + (i * 0.3),
+                      repeat: Infinity,
+                      delay: 1 + (i * 0.15),
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
-
       {/* Services Preview */}
       <section className="py-20 lg:py-32 bg-secondary/50">
         <div className="container mx-auto px-4">
