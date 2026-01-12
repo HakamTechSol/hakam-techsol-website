@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -20,13 +21,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-hero-gradient flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">H</span>
-            </div>
-            <span className="font-display font-bold text-xl text-foreground">
-              Hakam<span className="text-accent">TechSoul</span>
-            </span>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="Hakam TechSol Logo" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
