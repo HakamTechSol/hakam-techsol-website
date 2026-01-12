@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,16 +11,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-display font-bold text-xl">H</span>
-              </div>
-              <span className="font-display font-bold text-xl">
-                Hakam<span className="text-accent">TechSoul</span>
-              </span>
+            <Link to="/" className="inline-block">
+              <img src={logo} alt="Hakam TechSol Logo" className="h-14 w-auto brightness-0 invert" />
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
-              Empowering businesses with innovative technology solutions. Your vision, our expertise.
+              Digitalizing your businesses with innovative technology solutions. Your vision, our expertise.
             </p>
             <div className="flex gap-4">
               <a
