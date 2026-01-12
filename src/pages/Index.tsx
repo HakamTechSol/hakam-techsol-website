@@ -1,3 +1,4 @@
+// Hakam TechSoul Home Page
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Smartphone, Users, CheckCircle, Zap, Shield, Star } from "lucide-react";
