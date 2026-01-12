@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
-              <img src={logo} alt="Hakam TechSol Logo" className="h-14 w-auto brightness-0 invert" />
+              <img src={logo} alt="Hakam TechSol Logo" className="h-16 w-auto" />
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Digitalizing your businesses with innovative technology solutions. Your vision, our expertise.
