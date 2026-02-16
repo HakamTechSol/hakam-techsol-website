@@ -132,8 +132,8 @@ const Index = () => {
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
               <Link to="/contact">
-                <Button size="lg" className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
-                  Start Your Project <ArrowRight size={18} />
+                <Button size="sm" className="rounded-full px-6 py-2 bg-hero-gradient text-primary-foreground hover:shadow-lg hover:-translate-y-0.5 hover:opacity-95 transition-all duration-200 gap-2">
+                  Start Your Project <ArrowRight size={16} />
                 </Button>
               </Link>
               <Link to="/services">
