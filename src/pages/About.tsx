@@ -4,6 +4,7 @@ import { ArrowRight, Target, Eye, Users, Award, Lightbulb, Heart } from "lucide-
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 import teamImage from "@/assets/team.jpg";
 import heroImage from "@/assets/hero-tech.jpg";
 
@@ -44,6 +45,7 @@ const About = () => {
   ];
 
   return (
+    <PageTransition>
     <div className="min-h-screen">
       <Navbar />
 
@@ -267,7 +269,7 @@ const About = () => {
               discover how Hakam TechSoul can transform your business.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="bg-hero-gradient hover:opacity-90 gap-2">
+              <Button size="lg" className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
                 Get In Touch <ArrowRight size={18} />
               </Button>
             </Link>
@@ -277,6 +279,7 @@ const About = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

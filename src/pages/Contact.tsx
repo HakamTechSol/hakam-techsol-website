@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -73,6 +74,7 @@ const Contact = () => {
   ];
 
   return (
+    <PageTransition>
     <div className="min-h-screen">
       <Navbar />
 
@@ -344,6 +346,7 @@ const Contact = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
