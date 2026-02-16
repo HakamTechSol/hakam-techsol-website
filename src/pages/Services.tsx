@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 import webDevImage from "@/assets/web-dev.jpg";
 import mobileDevImage from "@/assets/mobile-dev.jpg";
 import freelanceImage from "@/assets/freelance.jpg";
@@ -102,6 +103,7 @@ const Services = () => {
   ];
 
   return (
+    <PageTransition>
     <div className="min-h-screen">
       <Navbar />
 
@@ -173,7 +175,7 @@ const Services = () => {
                   </div>
 
                   <Link to="/contact">
-                    <Button className="bg-hero-gradient hover:opacity-90 gap-2">
+                    <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
                       Get Started <ArrowRight size={18} />
                     </Button>
                   </Link>
@@ -310,7 +312,7 @@ const Services = () => {
               you every step of the way.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="bg-card text-foreground hover:bg-card/90 gap-2">
+              <Button size="lg" className="bg-card text-foreground hover:bg-card/90 hover:scale-105 transition-all gap-2">
                 Start Your Project <ArrowRight size={18} />
               </Button>
             </Link>
@@ -320,6 +322,7 @@ const Services = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

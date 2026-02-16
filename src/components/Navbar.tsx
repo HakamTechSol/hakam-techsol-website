@@ -17,7 +17,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/60 backdrop-blur-xl backdrop-saturate-150 border-b border-border/50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative font-medium transition-colors hover:text-accent ${
+                className={`relative font-medium transition-all hover:text-accent hover:scale-105 ${
                   location.pathname === link.path
                     ? "text-accent"
                     : "text-muted-foreground"
@@ -51,7 +51,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link to="/contact">
-              <Button className="bg-hero-gradient hover:opacity-90 transition-opacity">
+              <Button className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all">
                 Get Started
               </Button>
             </Link>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Smartphone, Users, CheckCircle, Zap, Shield, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-tech.jpg";
 import webDevImage from "@/assets/web-dev.jpg";
@@ -84,6 +85,7 @@ const Index = () => {
   ];
 
   return (
+    <PageTransition>
     <div className="min-h-screen">
       <Navbar />
 
@@ -130,12 +132,12 @@ const Index = () => {
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
               <Link to="/contact">
-                <Button size="lg" className="bg-hero-gradient hover:opacity-90 transition-opacity gap-2">
+                <Button size="lg" className="bg-hero-gradient hover:opacity-90 hover:scale-105 transition-all gap-2">
                   Start Your Project <ArrowRight size={18} />
                 </Button>
               </Link>
               <Link to="/services">
-                <Button size="lg" variant="outline" className="border-primary hover:bg-primary hover:text-primary-foreground">
+                <Button size="lg" variant="outline" className="border-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all">
                   Explore Services
                 </Button>
               </Link>
@@ -502,6 +504,7 @@ const Index = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
