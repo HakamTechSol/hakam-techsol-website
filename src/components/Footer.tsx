@@ -23,7 +23,9 @@ const Footer = () => {
             </p>
             <div className="flex gap-8 pt-12 items-start">
               <a
-                href="#"
+                href="https://www.facebook.com/p/Hakamtechsol-100069162042893/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
                 aria-label="Facebook"
               >
