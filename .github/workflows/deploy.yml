@@ -25,12 +25,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          # AGAR website main domain par hai, toh sirf /public_html/ rakhein
           server-dir: /public_html/
-          # Ye purani files delete karke nayi daal dega (Changes foran dikhengi)
-          dangerous-clean-slate: true 
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github*/**
-            node_modules/**
+          dangerous-clean-slate: true
