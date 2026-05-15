@@ -7,10 +7,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: hakamwebsite
+    # Agar aapne secrets 'Environment' mein rakhay hain to ye line rehne den
+    environment: hakamwebsite 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
 
       - name: Sync Files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -18,8 +25,13 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # YAHAN APNE NAYE PROJECT KA FOLDER PATH LIKHEN
-          server-dir: /public_html/apka-static-project-folder/ 
+          # 1. 'dist' folder upload karna hai kyunke Vite build wahan banti hai
+          local-dir: ./dist/
+          # 2. CWP mein manually ye folder 'hakam-tech' bana len pehle
+          server-dir: /public_html/hakam-tech/ 
+          # 3. In cheezon ko upload karne ki zaroorat nahi
           exclude: |
-            .git*
-            .github/workflows/
+            **/.git*
+            **/.git*/**
+            **/.github*/**
+            node_modules/**
