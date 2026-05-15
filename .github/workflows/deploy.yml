@@ -1,4 +1,5 @@
 name: Deploy Static Website
+
 on:
   push:
     branches:
@@ -7,29 +8,27 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Agar aapne secrets 'Environment' mein rakhay hain to ye line rehne den
-    environment: hakamwebsite 
     steps:
-      - name: Checkout Code
+      - name: 🚚 Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
+      - name: 🛠️ Install Dependencies
         run: npm install
 
-      - name: Build Project
+      - name: 🏗️ Build Project
         run: npm run build
 
-      - name: Sync Files via FTP
+      - name: 📂 Sync Files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # 1. 'dist' folder upload karna hai kyunke Vite build wahan banti hai
           local-dir: ./dist/
-          # 2. CWP mein manually ye folder 'hakam-tech' bana len pehle
-          server-dir: /public_html/hakam-tech/ 
-          # 3. In cheezon ko upload karne ki zaroorat nahi
+          # AGAR website main domain par hai, toh sirf /public_html/ rakhein
+          server-dir: /public_html/
+          # Ye purani files delete karke nayi daal dega (Changes foran dikhengi)
+          dangerous-clean-slate: true 
           exclude: |
             **/.git*
             **/.git*/**
